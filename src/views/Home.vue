@@ -12,29 +12,29 @@
           title="Escolher Sabor"
           :before-change="selectFlavorTab"
         >
-          <v-alert
+          <base-alert
             border="left"
             color="blue-grey"
             dark
           >
-            <v-row align="center">
-              <v-col class="grow">
+            <base-row align="center">
+              <base-col class="grow">
                 Selecione o sabor
                 <br />
                 <span class="grey--text">Escolha até 1 opção.</span>
-              </v-col>
-              <v-col class="shrink">
-                <v-chip label>Obrigatório</v-chip>
-              </v-col>
-            </v-row>
-          </v-alert>
+              </base-col>
+              <base-col class="shrink">
+                <base-chip label>Obrigatório</base-chip>
+              </base-col>
+            </base-row>
+          </base-alert>
 
-          <v-row no-gutters>
-            <v-col
+          <base-row no-gutters>
+            <base-col
               cols="12"
               sm="4"
             >
-              <v-container fluid>
+              <base-container fluid>
                 <base-radio-group
                   v-model="order.flavor"
                   attribute-error="Sabor"
@@ -49,9 +49,9 @@
 
                 </base-radio-group>
 
-              </v-container>
-            </v-col>
-          </v-row>
+              </base-container>
+            </base-col>
+          </base-row>
 
         </tab-content>
 
@@ -59,29 +59,29 @@
           title="Escolher Tamanho"
           :before-change="selectSizeTab"
         >
-          <v-alert
+          <base-alert
             border="left"
             color="blue-grey"
             dark
           >
-            <v-row align="center">
-              <v-col class="grow">
+            <base-row align="center">
+              <base-col class="grow">
                 Selecione o Tamanho
                 <br />
                 <span class="grey--text">Escolha até 1 opção.</span>
-              </v-col>
-              <v-col class="shrink">
-                <v-chip label>Obrigatório</v-chip>
-              </v-col>
-            </v-row>
-          </v-alert>
+              </base-col>
+              <base-col class="shrink">
+                <base-chip label>Obrigatório</base-chip>
+              </base-col>
+            </base-row>
+          </base-alert>
 
-          <v-row no-gutters>
-            <v-col
+          <base-row no-gutters>
+            <base-col
               cols="12"
               sm="4"
             >
-              <v-container fluid>
+              <base-container fluid>
 
                 <base-radio-group
                   v-model="order.size"
@@ -99,29 +99,29 @@
                   </base-radio>
 
                 </base-radio-group>
-              </v-container>
-            </v-col>
-          </v-row>
+              </base-container>
+            </base-col>
+          </base-row>
         </tab-content>
         <tab-content
           title="Personalizar"
           :before-change="customizationTab"
         >
-          <v-alert
+          <base-alert
             border="left"
             color="blue-grey"
             dark
           >
-            <v-row align="center">
-              <v-col class="grow">
+            <base-row align="center">
+              <base-col class="grow">
                 Personalização
                 <br />
-              </v-col>
-              <v-col class="shrink">
-                <v-chip label>Opcional</v-chip>
-              </v-col>
-            </v-row>
-          </v-alert>
+              </base-col>
+              <base-col class="shrink">
+                <base-chip label>Opcional</base-chip>
+              </base-col>
+            </base-row>
+          </base-alert>
 
           <v-list>
             <v-list-item-group v-model="order.customizations">
@@ -135,8 +135,8 @@
                 </v-list-item-content>
 
                 <v-list-item-action>
-                  <v-row no-gutters>
-                    <v-col
+                  <base-row no-gutters>
+                    <base-col
                       v-if="customization.amount>0"
                       cols="3"
                     >
@@ -148,14 +148,14 @@
                       >
                         <v-icon>mdi-minus</v-icon>
                       </v-btn>
-                    </v-col>
-                    <v-col
+                    </base-col>
+                    <base-col
                       v-if="customization.amount>0"
                       cols="3"
                     >
-                      <v-chip class="ma-2">{{customization.amount}}</v-chip>
-                    </v-col>
-                    <v-col cols="3">
+                      <base-chip class="ma-2">{{customization.amount}}</base-chip>
+                    </base-col>
+                    <base-col cols="3">
                       <v-btn
                         @click="customization.amount++"
                         class="ma-2"
@@ -164,8 +164,8 @@
                       >
                         <v-icon>mdi-plus</v-icon>
                       </v-btn>
-                    </v-col>
-                  </v-row>
+                    </base-col>
+                  </base-row>
                 </v-list-item-action>
               </v-list-item>
             </v-list-item-group>
@@ -185,22 +185,22 @@
                 <br />
                 <v-divider></v-divider>
                 <br />
-                <v-row no-gutters>
-                  <v-col
+                <base-row no-gutters>
+                  <base-col
                     cols="12"
                     class="black--text font-weight-bold text-h6"
-                  >Subtotal: R${{order.total_price | MoneyFormat}}</v-col>
-                </v-row>
-                <v-row no-gutters>
-                  <v-col
+                  >Subtotal: R${{order.total_price | MoneyFormat}}</base-col>
+                </base-row>
+                <base-row no-gutters>
+                  <base-col
                     cols="12"
                     class="black--text font-weight-bold text-h6"
-                  >Tempo de Preparo: {{order.total_preparation_time}} minutos</v-col>
-                  <v-col
+                  >Tempo de Preparo: {{order.total_preparation_time}} minutos</base-col>
+                  <base-col
                     cols="1"
                     class="black--text font-weight-bold text-h6"
-                  ></v-col>
-                </v-row>
+                  ></base-col>
+                </base-row>
               </v-card-text>
             </v-card>
           </div>

@@ -15,9 +15,7 @@
 
 export default {
   name: "BaseRadio",
-
   props: {
-
     label: {
       type: String,
       default: ""
