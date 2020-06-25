@@ -23,17 +23,17 @@ const flavors = [
 
     {
         id: 1,
-        name: 'morango',
+        name: 'Morango',
         preparation_time: '0'
     },
     {
         id: 2,
-        name: 'banana',
+        name: 'Manana',
         preparation_time: '0'
     },
     {
         id: 3,
-        name: 'kiwi',
+        name: 'Kiwi',
         preparation_time: '5'
     }
 
@@ -42,7 +42,7 @@ const flavors = [
 const customizations = [
     {
         id: 1,
-        name: 'granola',
+        name: 'Granola',
         price: '0.00',
         preparation_time: '0'
     },
