@@ -4,18 +4,18 @@ export default {
 
     state: {
         miniStore: false,
-        drawerStore: true,
+        drawerStore: false,
     },
 
     mutations: {
 
-        SET_MINI(state, newMini) {
+        SET_MINI (state, newMini) {
 
             state.miniStore = newMini
 
         },
 
-        SET_DRAWER(state, newDrawer) {
+        SET_DRAWER (state, newDrawer) {
 
             state.drawerStore = newDrawer
         }
@@ -24,13 +24,13 @@ export default {
 
     getters: {
 
-        mini(state) {
+        mini (state) {
 
             return state.miniStore
 
         },
 
-        drawer(state) {
+        drawer (state) {
 
             return state.drawerStore
 

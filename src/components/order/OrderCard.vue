@@ -7,13 +7,16 @@
       color="blue-grey"
       dark
     >
-      <base-row align="center">
-        <base-col class="grow">
+      <base-row no-gutters>
+        <base-col
+          cols="8"
+          class="grow"
+        >
           {{headTitle}}
           <br />
           <span class="grey--text">{{headContent}}</span>
         </base-col>
-        <base-col class="shrink">
+        <base-col cols="4">
           <base-chip label>{{headAction}}</base-chip>
         </base-col>
       </base-row>

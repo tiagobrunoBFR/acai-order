@@ -1,6 +1,6 @@
 <template>
   <v-col
-    :class="cols"
+    :cols="cols"
     :sm="sm"
     :md="md"
   >
