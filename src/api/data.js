@@ -28,7 +28,7 @@ const flavors = [
     },
     {
         id: 2,
-        name: 'Manana',
+        name: 'Banana',
         preparation_time: '0'
     },
     {

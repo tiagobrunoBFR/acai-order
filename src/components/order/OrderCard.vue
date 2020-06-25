@@ -7,7 +7,10 @@
       color="blue-grey"
       dark
     >
-      <base-row no-gutters>
+      <base-row
+        align="center"
+        no-gutters
+      >
         <base-col
           cols="8"
           class="grow"
@@ -16,7 +19,10 @@
           <br />
           <span class="grey--text">{{headContent}}</span>
         </base-col>
-        <base-col cols="4">
+        <base-col
+          cols="4"
+          class="shrink"
+        >
           <base-chip label>{{headAction}}</base-chip>
         </base-col>
       </base-row>
