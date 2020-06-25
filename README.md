@@ -1,5 +1,29 @@
 # acai-order
 
+## About 
+```
+App for create order of açaí, first select the flavor (required), second select the size (required), third customizations(optional)
+```
+
+## Demo app 
+```
+https://order-acai.netlify.app/
+```
+
+### tools 
+
+- Vuejs
+
+- Vue Form Wizard
+
+- Vuetify 
+
+- Vuelidate
+
+- Vue Form Wizard
+
+- Miragejs
+
 ## Project setup
 ```
 npm install
@@ -10,20 +34,4 @@ npm install
 npm run serve
 ```
 
-### Compiles and minifies for production
-```
-npm run build
-```
 
-### Run your tests
-```
-npm run test
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).

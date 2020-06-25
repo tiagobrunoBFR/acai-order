@@ -10,9 +10,9 @@ import "./plugins/vuelidate";
 
 Vue.config.productionTip = false
 
-if (process.env.NODE_ENV === 'development') {
-  makeServer();
-}
+// if (process.env.NODE_ENV === 'development') {
+makeServer();
+// }
 
 new Vue({
   router,
