@@ -33,19 +33,19 @@ export default {
   props: {
     value: {
       type: Boolean,
-      default: true
+      default: false
     }
   },
 
-  data() {
+  data () {
     return {
       items: [
-        { title: "Pedido", icon: "restaurant_menu", to: { name: "Home" } }
+        {title: "Pedido", icon: "restaurant_menu", to: {name: "Home"}}
       ]
     };
   },
   methods: {
-    changeDrawer() {
+    changeDrawer () {
       this.$emit("change-drawer");
     }
   }
