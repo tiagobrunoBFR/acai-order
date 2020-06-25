@@ -12,46 +12,12 @@
           title="Escolher Sabor"
           :before-change="selectFlavorTab"
         >
-          <base-alert
-            border="left"
-            color="blue-grey"
-            dark
-          >
-            <base-row align="center">
-              <base-col class="grow">
-                Selecione o sabor
-                <br />
-                <span class="grey--text">Escolha até 1 opção.</span>
-              </base-col>
-              <base-col class="shrink">
-                <base-chip label>Obrigatório</base-chip>
-              </base-col>
-            </base-row>
-          </base-alert>
 
-          <base-row no-gutters>
-            <base-col
-              cols="12"
-              sm="4"
-            >
-              <base-container fluid>
-                <base-radio-group
-                  v-model="order.flavor"
-                  attribute-error="Sabor"
-                  :v="$v.order.flavor"
-                >
-                  <base-radio
-                    v-for="(flavor, index) in flavors"
-                    :key="index"
-                    :label="flavor.name"
-                    :item-value="flavor"
-                  />
-
-                </base-radio-group>
-
-              </base-container>
-            </base-col>
-          </base-row>
+          <order-select-flavor
+            v-model="order.flavor"
+            :v="$v.order.flavor"
+            :flavors="flavors"
+          />
 
         </tab-content>
 
@@ -59,151 +25,26 @@
           title="Escolher Tamanho"
           :before-change="selectSizeTab"
         >
-          <base-alert
-            border="left"
-            color="blue-grey"
-            dark
-          >
-            <base-row align="center">
-              <base-col class="grow">
-                Selecione o Tamanho
-                <br />
-                <span class="grey--text">Escolha até 1 opção.</span>
-              </base-col>
-              <base-col class="shrink">
-                <base-chip label>Obrigatório</base-chip>
-              </base-col>
-            </base-row>
-          </base-alert>
 
-          <base-row no-gutters>
-            <base-col
-              cols="12"
-              sm="4"
-            >
-              <base-container fluid>
-
-                <base-radio-group
-                  v-model="order.size"
-                  attribute-error="Tamanho"
-                  :v="$v.order.size"
-                >
-                  <base-radio
-                    v-for="(size, index) in sizes"
-                    :key="index"
-                    :item-value="size"
-                  >
-                    <template v-slot:label>
-                      {{size.name}} - {{size.price | MoneyFormat}}
-                    </template>
-                  </base-radio>
-
-                </base-radio-group>
-              </base-container>
-            </base-col>
-          </base-row>
+          <order-select-size
+            v-model="order.size"
+            :v="$v.order.size"
+            :sizes="sizes"
+          />
         </tab-content>
         <tab-content
           title="Personalizar"
           :before-change="customizationTab"
         >
-          <base-alert
-            border="left"
-            color="blue-grey"
-            dark
-          >
-            <base-row align="center">
-              <base-col class="grow">
-                Personalização
-                <br />
-              </base-col>
-              <base-col class="shrink">
-                <base-chip label>Opcional</base-chip>
-              </base-col>
-            </base-row>
-          </base-alert>
 
-          <v-list>
-            <v-list-item-group v-model="order.customizations">
-              <v-list-item
-                v-for="(customization, index) in customizations"
-                :key="`item-${index}`"
-                link
-              >
-                <v-list-item-content>
-                  <v-list-item-title>{{customization.name}} - {{customization.price | MoneyFormat}}</v-list-item-title>
-                </v-list-item-content>
+          <order-customization
+            v-model="order.customizations"
+            :customizations="customizations"
+          />
 
-                <v-list-item-action>
-                  <base-row no-gutters>
-                    <base-col
-                      v-if="customization.amount>0"
-                      cols="3"
-                    >
-                      <v-btn
-                        @click="customization.amount--"
-                        class="ma-2"
-                        icon
-                        color="pink"
-                      >
-                        <v-icon>mdi-minus</v-icon>
-                      </v-btn>
-                    </base-col>
-                    <base-col
-                      v-if="customization.amount>0"
-                      cols="3"
-                    >
-                      <base-chip class="ma-2">{{customization.amount}}</base-chip>
-                    </base-col>
-                    <base-col cols="3">
-                      <v-btn
-                        @click="customization.amount++"
-                        class="ma-2"
-                        icon
-                        color="pink"
-                      >
-                        <v-icon>mdi-plus</v-icon>
-                      </v-btn>
-                    </base-col>
-                  </base-row>
-                </v-list-item-action>
-              </v-list-item>
-            </v-list-item-group>
-          </v-list>
         </tab-content>
         <tab-content title="Detalhes Pedido">
-          <div class="d-flex flex-column mb-6">
-            <v-card class="pa-2">
-              <v-card-title>{{order.flavor.name}} {{order.size.name}} R$ {{order.size.price | MoneyFormat}}</v-card-title>
-              <v-card-text>
-                <ul>
-                  <li
-                    v-for="custom in order.customizations"
-                    :key="custom.id"
-                  >{{custom.amount}}x {{custom.name}} - {{custom.price | MoneyFormat}}</li>
-                </ul>
-                <br />
-                <v-divider></v-divider>
-                <br />
-                <base-row no-gutters>
-                  <base-col
-                    cols="12"
-                    class="black--text font-weight-bold text-h6"
-                  >Subtotal: R${{order.total_price | MoneyFormat}}</base-col>
-                </base-row>
-                <base-row no-gutters>
-                  <base-col
-                    cols="12"
-                    class="black--text font-weight-bold text-h6"
-                  >Tempo de Preparo: {{order.total_preparation_time}} minutos</base-col>
-                  <base-col
-                    cols="1"
-                    class="black--text font-weight-bold text-h6"
-                  ></base-col>
-                </base-row>
-              </v-card-text>
-            </v-card>
-          </div>
+          <order-details :order="order" />
         </tab-content>
       </form-wizard>
     </TheMaster>
@@ -212,7 +53,10 @@
 
 <script>
 import TheMaster from "@/components/core/TheMaster.vue";
-import MoneyFormat from "../filters/MoneyFormat";
+import OrderSelectFlavor from "@/components/order/OrderSelectFlavor.vue";
+import OrderSelectSize from "@/components/order/OrderSelectSize.vue";
+import OrderCustomization from "@/components/order/OrderCustomization.vue";
+import OrderDetails from "@/components/order/OrderDetails.vue";
 import {FormWizard, TabContent} from "vue-form-wizard";
 import "vue-form-wizard/dist/vue-form-wizard.min.css";
 import {required} from 'vuelidate/lib/validators'
@@ -222,10 +66,11 @@ export default {
   components: {
     TheMaster,
     FormWizard,
-    TabContent
-  },
-  filters: {
-    MoneyFormat
+    TabContent,
+    OrderCustomization,
+    OrderSelectFlavor,
+    OrderSelectSize,
+    OrderDetails
   },
 
   validations: {
@@ -332,8 +177,6 @@ export default {
 
   data () {
     return {
-
-      settings: [],
       order: {
         total_preparation_time: "",
         total_price: "",
@@ -341,7 +184,6 @@ export default {
         flavor: "",
         customizations: []
       },
-
     };
   }
 };
