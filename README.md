@@ -16,8 +16,6 @@
 
 - Vuelidate
 
-- Vue Form Wizard
-
 - Miragejs
 
 ## Project setup
